@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khushi – My Baccha 💖</title>
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiS2h1c2hpIE1hZ2ljIiwic2hvcnRfbmFtZSI6IktoaXNoaSIsInN0YXJ0X3VybCI6Ii8iLCJkaXNwbGF5IjoiZnVsbHNjcmVlbiIsImJhY2tncm91bmRfY29sb3IiOiIjZmY2OWI0In0=">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Pro CSS - Enhanced Visibility and Design */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%),
+      radial-gradient(circle at 20% 80%, #ffd4d4 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, #a8edea 0%, transparent 50%);
+      background-size: 200% 200%, 100% 100%, 100% 100%;
+      animation: gradientShift 8s ease infinite, sparkleBg 20s linear infinite;
+      color: #2d1b69; /* Darker color for all text */
+      text-align: center; overflow-x: hidden;
+      user-select: none; position: relative;
+    }
+    p, h1, h2, h3, strong, em, span, button, input::placeholder { color: #2d1b69 !important; } /* Force darker text everywhere */
+    @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    @keyframes sparkleBg { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+
+    /* Starry Particles BG */
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+    .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 3s infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1); } }
+
+    /* Space Background for Last Page */
+    .space-bg {
+      background: linear-gradient(135deg, #000428 0%, #004e92 50%, #000428 100%),
+      radial-gradient(circle at 20% 80%, #667eea 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, #764ba2 0%, transparent 50%);
+      background-size: 200% 200%, 100% 100%, 100% 100%;
+      animation: spaceShift 10s ease infinite;
+      color: #fff !important;
+    }
+    @keyframes spaceShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .space-bg p, .space-bg h1, .space-bg h2, .space-bg h3, .space-bg strong, .space-bg em, .space-bg span { color: #fff !important; text-shadow: 0 0 10px #fff; }
+
+    .page { display: none; padding: 20px; min-height: 100vh; position: relative; opacity: 0; }
+    .page.active { display: block; opacity: 1; }
+    h1, h2, h3 { font-family: 'Dancing Script', cursive; font-weight: 700; text-shadow: 0 0 20px rgba(45, 27, 105, 0.8); color: #2d1b69 !important; }
+    h1 { font-size: 3em; margin-bottom: 10px; }
+    h2 { font-size: 2.5em; color: #ff69b4 !important; }
+
+    /* Glassmorphism Cards */
+    .glass-card { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); padding: 30px; margin: 20px auto; max-width: 500px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; color: #2d1b69; }
+    .glass-card:hover { transform: translateY(-10px); box-shadow: 0 12px 40px rgba(255,105,180,0.3); }
+    .glass-card p, .glass-card h2, .glass-card h3, .glass-card strong { color: #2d1b69 !important; }
+
+    /* Typewriter Pro - Enhanced Visibility for Page 2 */
+    .typewriter { font-size: 1.8em; font-family: 'Poppins', sans-serif; border-right: 3px solid #ff69b4; white-space: nowrap; overflow: hidden; animation: blink 1s infinite, glow 2s ease-in-out infinite alternate; color: #2d1b69 !important; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); background: rgba(255,255,255,0.3); padding: 10px; border-radius: 10px; display: inline-block; }
+    @keyframes blink { 0%, 50% { border-color: transparent; } 51%, 100% { border-color: #ff69b4; } }
+    @keyframes glow { 0% { text-shadow: 0 0 5px #ff69b4; } 100% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; } }
+
+    /* Floating Hearts & Balloons */
+    .floating-hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+    .heart, .balloon { position: absolute; font-size: 25px; animation: floatPro 8s linear infinite; }
+    .balloon { content: '🎈'; animation-delay: -2s; }
+    @keyframes floatPro { 0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(360deg) scale(1); opacity: 0; } }
+
+    /* Love Meter Pro */
+    .love-meter { margin: 20px 0; }
+    #loveSlider { width: 80%; height: 8px; background: rgba(255,255,255,0.2); outline: none; border-radius: 10px; }
+    #loveSlider::-webkit-slider-thumb { background: #ff69b4; border-radius: 50%; width: 20px; height: 20px; box-shadow: 0 0 10px #ff69b4; }
+
+    /* Carousel Pro - More Space */
+    .carousel { position: relative; max-width: 400px; margin: 20px auto; perspective: 1000px; }
+    .slide { display: none; transition: transform 0.5s; margin: 20px 0; } /* Increased spacing */
+    .slide.active { display: block; transform: rotateY(0deg) scale(1); }
+    .slide img { width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.3s, filter 0.3s; height: auto; }
+    .slide img:hover { transform: scale(1.05); filter: drop-shadow(0 0 10px #ff69b4); }
+    .slide p { margin-top: 15px; color: #2d1b69 !important; font-style: italic; }
+
+    /* Timeline Pro */
+    .timeline { display: flex; flex-direction: column; align-items: center; padding: 0 10px; }
+    .timeline-item { margin: 40px 0; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 15px; width: 90%; max-width: 500px; border-left: 4px solid #ff69b4; transform: translateX(-50px); opacity: 0; transition: all 0.6s; color: #2d1b69; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .timeline-item.visible { transform: translateX(0); opacity: 1; }
+    .timeline-item h3, .timeline-item p { color: #2d1b69 !important; }
+
+    /* Gift Boxes 3D Pro - Separate, Spaced Boxes */
+    .gift-section { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 30px 0; padding: 20px; } /* Open, spacious layout */
+    .gift-box { perspective: 1000px; cursor: pointer; flex: 0 1 120px; } /* Fixed width for separation */
+    .gift-box-inner { transition: transform 0.8s; transform-style: preserve-3d; }
+    .gift-box.flipped .gift-box-inner { transform: rotateY(180deg); }
+    .gift-front, .gift-back { position: absolute; width: 120px; height: 120px; backface-visibility: hidden; background: linear-gradient(135deg, #ff69b4, #9370db); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1em; box-shadow: 0 4px 15px rgba(0,0,0,0.2); color: white; text-align: center; padding: 5px; }
+    .gift-back { transform: rotateY(180deg); background: linear-gradient(135deg, #9370db, #ff69b4); color: white; }
+
+    /* Love Letter Pro */
+    .love-letter { max-height: 60vh; overflow-y: auto; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 20px; text-align: left; line-height: 1.8; font-size: 1.1em; color: #2d1b69 !important; }
+    .highlight { color: #ff69b4 !important; cursor: pointer; position: relative; overflow: hidden; }
+    .highlight::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,105,180,0.3), transparent); transition: left 0.5s; }
+    .highlight:hover::before { left: 100%; }
+
+    /* Camera Styles - Enhanced */
+    #cameraVideo { width: 100%; max-width: 400px; border-radius: 20px; margin: 10px; background: #000; }
+    #selfieCanvas { display: none; width: 100%; border-radius: 20px; }
+
+    /* Buttons Pro - Functional and Styled */
+    button { padding: 15px 30px; background: linear-gradient(135deg, rgba(255,105,180,0.8), rgba(147,112,219,0.8)); border: none; border-radius: 30px; color: white !important; font-size: 1.1em; font-family: 'Poppins', sans-serif; cursor: pointer; margin: 10px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; overflow: hidden; }
+    button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 6px 20px rgba(255,105,180,0.4); }
+    button::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255,255,255,0.3); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+    button:active::before { width: 300px; height: 300px; }
+    .reaction-btn { background: linear-gradient(135deg, rgba(255,105,180,0.9), rgba(255,182,193,0.9)); margin: 15px; padding: 20px; min-width: 250px; font-size: 1.2em; } /* Larger, better reaction buttons */
+    .quiz-options button { background: linear-gradient(135deg, rgba(255,182,193,0.7), rgba(255,105,180,0.7)); margin: 10px; padding: 12px 20px; } /* Quiz buttons without signs */
+
+    /* Input Pro */
+    input { padding: 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3); margin: 10px; font-size: 1em; background: rgba(255,255,255,0.2); color: #2d1b69 !important; }
+
+    /* Canvas */
+    #heartbeatCanvas { width: 100%; height: 120px; background: rgba(0,0,0,0.2); border-radius: 15px; margin: 10px 0; }
+
+    /* Responsive */
+    @media (max-width: 600px) { h1 { font-size: 2.5em; } .glass-card { padding: 20px; margin: 10px; } .carousel { max-width: 300px; } .gift-section { flex-direction: column; align-items: center; gap: 20px; } .reaction-btn { min-width: 100%; } }
+    @media (min-width: 601px) { .timeline-item { width: 60%; } .gift-section { justify-content: space-evenly; } }
+
+    /* PWA */
+    @media (display-mode: standalone) { body { background: #000; color: #fff; } p, h1, h2, h3, strong, em, span, button { color: #fff !important; } input { color: #fff !important; background: rgba(255,255,255,0.1); } }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- Page 1: Private Entry -->
+<section id="page1" class="page active">
+  <div class="glass-card private-gate">
+    <h1>I love you baby</h1>
+    <p>Only one soul owns this realm…</p>
+    <div class="entry-info">
+      <p><strong>Name:</strong> Khushi 💖</p>
+      <p><strong>Relationship:</strong> Meri Eternal Baccha 😌</p>
+    </div>
+    <input type="password" id="unlockCode" placeholder="Enter Unlock (Hint: baccha)" maxlength="20">
+    <button onclick="unlockEntry()">👉 Dive into Our Universe</button>
+  </div>
+</section>
+
+<!-- Page 2: Flirt Mode - Enhanced Visibility -->
+<section id="page2" class="page">
+  <div class="glass-card typewriter-container">
+    <p class="typewriter" id="flirtText"></p>
+    <div class="mood-quiz" id="moodQuiz" style="display:none;">
+      <button onclick="moodSelect('flirty')">😏 Flirty</button>
+      <button onclick="moodSelect('cute')">🥺 Cute</button>
+      <button onclick="moodSelect('bossy')">😤 Bossy</button>
+    </div>
+    <button onclick="nextPage(3)">👉 Ruko mat, aur dikhao</button>
+  </div>
+</section>
+
+<!-- Page 3: Possessive Cute + Love Meter -->
+<section id="page3" class="page">
+  <div class="glass-card">
+    <p>Secret time, baccha? Main possessive nahi... bas thoda protective dad-vibes wala boyfriend hoon 😌 Kyuki tum meri ho – aur yeh baat mujhe superhero feel karwati hai ❤️🦸‍♂️</p>
+    <div class="love-meter">
+      <input type="range" min="0" max="100" value="0" id="loveSlider" oninput="updateMeter()">
+      <span id="meterValue">0%</span>
+    </div>
+    <div class="quiz-options">
+      <button onclick="quizAnswer('maybe')">Maybe</button>
+      <button onclick="quizAnswer('thoda')">Thoda</button>
+      <button onclick="quizAnswer('haan')">Haan, poori tarah! 😤❤️</button>
+    </div>
+    <button id="next3" onclick="nextPage(4)" style="display:none;">Ab aage ka magic dekho</button>
+  </div>
+</section>
+
+<!-- Page 4: Photo Gallery with Provided Images -->
+<section id="page4" class="page">
+  <h2>📸 My Khushi Gallery 💖</h2>
+  <div class="carousel glass-card">
+    <div class="slide active" data-part="1">
+      <img src="img/khushi-pink-saree.jpg" alt="Khushi in Pink Saree" onclick="photoTap(this)">
+      <p>Queen Mode: Yeh queen nahi, meri personal goddess hai 💖</p>
+    </div>
+    <div class="slide" data-part="2">
+      <img src="img/khushi-red-dress.jpg" alt="Khushi in Red Dress" onclick="photoTap(this)">
+      <p>Cute Baccha Mode: Pagalpan ka dose, zidd ki spice – perfect recipe for my heart 💞</p>
+    </div>
+    <div class="slide" data-part="3">
+      <img src="img/khushi-purple-top.jpg" alt="Khushi in Purple Top" onclick="photoTap(this)">
+      <p>My Favourite Smile: Is smile ke bina, mera har subah incomplete hai 🥹</p>
+    </div>
+    <div class="slide" data-part="4">
+      <img src="img/khushi-white-saree.jpg" alt="Khushi in White Saree" id="futurePic" onclick="photoTap(this)">
+      <p>Us Together Tease: Yeh abhi sapna hai... but soon reality ❤️</p>
+      <div>
+        <button onclick="unlockFuture('beach')">Beach</button>
+        <button onclick="unlockFuture('stars')">Stars</button>
+        <button onclick="unlockFuture('home')">Home</button>
+      </div>
+    </div>
+    <button onclick="prevSlide()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">←</button>
+    <button onclick="nextSlide()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">→</button>
+  </div>
+  <button onclick="nextPage(5)">Next Magic</button>
+</section>
+
+<!-- Page 5: Memory Timeline -->
+<section id="page5" class="page timeline">
+  <h2>🧠 Our Memory Timeline 🥹</h2>
+  <div class="timeline-item">
+    <h3>📅 15 Nov 2024</h3>
+    <p>Pehli mulaqaat – jaise stars align ho gaye.</p>
+    <button onclick="playMemoryClip('nov15')">Play Clip</button>
+  </div>
+  <div class="timeline-item">
+    <h3>💬 First Chat Marathon</h3>
+    <p>Neend bhool gaye, dil khush ho gaya.</p>
+    <button onclick="playMemoryClip('firstchat')">Play Clip</button>
+  </div>
+  <div class="timeline-item">
+    <h3>❤️ First 'Baccha' Call</h3>
+    <p>Tab se official family member 😌</p>
+    <button onclick="playMemoryClip('baccha')">Play Clip</button>
+  </div>
+  <p style="margin-top: 20px;">Yeh timeline khatam nahi hoti – har din naya chapter add hoga.</p>
+  <button onclick="nextPage(6)">Continue Journey</button>
+</section>
+
+<!-- Page 6: Your Voice + Heartbeat -->
+<section id="page6" class="page">
+  <div class="glass-card">
+    <h2>🎧 Dil Se Suno 💖</h2>
+    <button onclick="playVoice()">👉 Aankhein band karo, dil se suno 🎙️</button>
+    <canvas id="heartbeatCanvas"></canvas>
+    <button onclick="nextPage(7)">Next Surprise</button>
+  </div>
+</section>
+
+<!-- Page 7: Gifts - Spaced Boxes -->
+<section id="page7" class="page">
+  <h2 class="glass-card">🎁 Gifts Galore! 🥰</h2>
+  <div class="gift-section">
+    <div class="gift-box" onclick="flipGift(this, 'hug')">
+      <div class="gift-box-inner">
+        <div class="gift-front">🤗 Hug</div>
+        <div class="gift-back">Virtual Hug 2.0 – Lonely nights ke liye!</div>
+      </div>
+    </div>
+    <div class="gift-box" onclick="flipGift(this, 'care')">
+      <div class="gift-box-inner">
+        <div class="gift-front">💳 Care</div>
+        <div class="gift-back">Lifetime Care Card – Valid forever 😌</div>
+      </div>
+    </div>
+    <div class="gift-box" id="lockedGift" onclick="unlockGift()">
+      <div class="gift-box-inner">
+        <div class="gift-front">🔒 Locked</div>
+        <div class="gift-back" style="display:none;">I LOVE YOU BACCHA! 💖 (Fireworks!)</div>
+      </div>
+    </div>
+    <div class="gift-box" onclick="flipGift(this, 'voucher')">
+      <div class="gift-box-inner">
+        <div class="gift-front">🎟️ Voucher</div>
+        <div class="gift-back">One Wish Free: Travel/Date – Redeem anytime!</div>
+      </div>
+    </div>
+  </div>
+  <button onclick="nextPage(8)">More Love</button>
+</section>
+
+<!-- Page 8: Love Letter -->
+<section id="page8" class="page">
+  <div class="glass-card">
+    <h2>💌 My Heart to Yours 🥹</h2>
+    <div class="love-letter">
+      <p>Dear Baccha,</p>
+      <p>Tumhari har muskurahat mujhe yaad dilati hai ki life kitni khoobsurat ho sakti hai. Tum sirf meri girlfriend nahi ho Khushi, tum meri aadat, meri zimmedari aur meri dua ho 💞</p>
+      <p class="highlight" onclick="playFootnote('smile')">Is smile ke liye main har din jeene ko ready hoon.</p>
+      <p>Ending: Tum meri zindagi ho. Forever, Sandeep ❤️</p>
+    </div>
+    <button onclick="nextPage(9)">Share Your Heart</button>
+  </div>
+</section>
+
+<!-- Page 9: Reaction Zone - Removed Voice Record, Enhanced Functionality -->
+<section id="page9" class="page">
+  <div class="glass-card">
+    <h2>📱 Your Reaction, Baccha? 😌</h2>
+    <p>Comfortable? Chalo share karte hain!</p>
+    <video id="cameraVideo" autoplay playsinline style="display:none;"></video>
+    <canvas id="selfieCanvas"></canvas>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <button class="reaction-btn" onclick="takeSelfie()">📸 Smile Selfie (Capture!)</button>
+      <button class="reaction-btn" onclick="shareLocation()">📍 Location Heart</button>
+      <button class="reaction-btn" onclick="futureAwaits()">🌟 Future Awaits</button>
+    </div>
+  </div>
+</section>
+
+<!-- Page 10: Future Promise + Countdown -->
+<section id="page10" class="page">
+  <div class="glass-card">
+    <h2>⏳ Our Future Promise 🎂</h2>
+    <p>19 Dec – Har saal, yeh din mera personal Diwali hoga ❤️</p>
+    <p id="countdown"></p>
+    <div id="futureBoard" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin: 20px 0;">
+      <p>Our Dreams: Trip to Goa, Cozy Nights... Add yours! (Drag to pin)</p>
+    </div>
+    <button onclick="nextPage(11)">One Last Thing</button>
+  </div>
+</section>
+
+<!-- Page 11: Grand Finale -->
+<section id="page11" class="page">
+  <div class="glass-card">
+    <h2>💋 Eternal Closer 💖</h2>
+    <button onclick="finaleReveal()">👉 Ek Aakhri Jadoo...</button>
+    <div id="finaleText" style="display:none;">
+      <p>I love you baccha happy bday</p>
+      <p>– Sandeep, Tera Forever ❤️</p>
+    </div>
+    <button onclick="nextPage(12)">To the Stars 💫</button>
+    <button onclick="installPWA()">Save This Magic Forever</button>
+    <button onclick="deleteSite()">Delete After (7 days magic)</button>
+  </div>
+</section>
+
+<!-- Page 12: Final Space Page -->
+<section id="page12" class="page space-bg">
+  <div class="glass-card" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff;">
+    <h1 style="font-size: 4em; color: #fff !important;">I love you baccha happy bday meri jaan 💖</h1>
+    <p style="font-size: 1.5em; color: #fff !important;">Our love shines brighter than the stars... Forever yours, Sandeep 🌌</p>
+    <button onclick="location.reload()" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,105,180,0.2)); color: #fff !important; border: 1px solid rgba(255,255,255,0.5);">Replay Magic ✨</button>
+  </div>
+</section>
+
+<script>
+  // JS Code - Enhanced and Working
+  let currentPage = 1;
+  const pages = document.querySelectorAll('.page');
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  let tapCount = 0;
+  let deferredPrompt;
+  let stream;
+
+  // Particles BG
+  function initParticles() {
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.width = star.style.height = Math.random() * 3 + 'px';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  }
+  initParticles();
+
+  // Page Navigation
+  function nextPage(pageNum) {
+    gsap.to(`#page${currentPage}`, { opacity: 0, y: 50, duration: 0.6, ease: "power2.out" });
+    setTimeout(() => {
+      document.getElementById(`page${currentPage}`).classList.remove('active');
+      currentPage = pageNum;
+      document.getElementById(`page${currentPage}`).classList.add('active');
+      gsap.fromTo(`#page${currentPage}`, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+      if (pageNum === 5) {
+        gsap.from(".timeline-item", { x: -50, opacity: 0, duration: 0.8, stagger: 0.2 });
+      }
+      if (pageNum === 2) {
+        typeWriter();
+      }
+      if (pageNum === 12) {
+        // Add extra stars for space page
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => advancedMagicExplosion(), i * 100);
+        }
+      }
+    }, 600);
+  }
+
+  // Page 1 Unlock - Password 'baccha'
+  function unlockEntry() {
+    const code = document.getElementById('unlockCode').value.toLowerCase();
+    if (code === 'baccha' || code === '') {
+      nextPage(2);
+      createFloatingElements();
+      advancedMagicExplosion();
+    } else {
+      gsap.to('#unlockCode', { scale: 1.1, duration: 0.1, yoyo: true, repeat: 1 });
+      alert('Baccha, galat code? Hint: Tera special naam 😘');
+    }
+  }
+
+  // Typewriter - Enhanced for visibility
+  const flirtLines = [
+    "Hey baccha 😚",
+    "Tumhe pata hai, tumhari ek ankhi hi kaafi hai",
+    "mera saara universe hilane ke liye?",
+    "Aaj... tumhari wajah se har cheez pink nahi,",
+    "*galaxy pink* lag rahi hai 💖✨"
+  ];
+  let lineIndex = 0;
+  function typeWriter() {
+    const text = document.getElementById('flirtText');
+    if (lineIndex < flirtLines.length) {
+      text.innerHTML += flirtLines[lineIndex] + '<br><br>';
+      gsap.from(text, { scale: 1.1, duration: 0.3, yoyo: true, repeat: 1 });
+      lineIndex++;
+      setTimeout(typeWriter, 1500);
+    } else {
+      document.getElementById('moodQuiz').style.display = 'block';
+      gsap.from("#moodQuiz button", { y: 20, opacity: 0, stagger: 0.1, duration: 0.5 });
+    }
+  }
+
+  // Mood Select
+  function moodSelect(mood) {
+    let extraLine = '';
+    if (mood === 'flirty') extraLine = 'Achha, toh aaj main bhi thoda naughty banoonga 😉';
+    else if (mood === 'cute') extraLine = 'Aww, mera cute baccha 🥰';
+    else if (mood === 'bossy') extraLine = 'Boss mode on? Main handle kar loonga 😤';
+    document.getElementById('flirtText').innerHTML += `<br><em style="color: #2d1b69 !important; font-weight: bold;">${extraLine}</em>`;
+  }
+
+  // Love Meter
+  function updateMeter() {
+    const val = document.getElementById('loveSlider').value;
+    document.getElementById('meterValue').textContent = val + '%';
+    if (val >= 100) {
+      gsap.to('.love-meter', { scale: 1.1, rotation: 360, duration: 0.5 });
+      createConfetti();
+      advancedMagicExplosion();
+    }
+  }
+
+  // Quiz Answer
+  function quizAnswer(ans) {
+    if (ans === 'haan') {
+      gsap.from("#next3", { scale: 0, duration: 0.5 });
+      document.getElementById('next3').style.display = 'block';
+    } else {
+      alert('Try again, baccha – I know you better! ❤️');
+    }
+  }
+
+  // Carousel Navigation
+  function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+    gsap.fromTo(slides[currentSlide], { opacity: 0, x: 100 }, { opacity: 1, x: 0, duration: 0.5 });
+  }
+  function prevSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    gsap.fromTo(slides[currentSlide], { opacity: 0, x: -100 }, { opacity: 1, x: 0, duration: 0.5 });
+  }
+
+  // Photo Tap
+  function photoTap(img) {
+    alert('Photo hearted! 💖');
+    advancedMagicExplosion();
+  }
+
+  // Unlock Future
+  function unlockFuture(guess) {
+    if (guess === 'beach') {
+      gsap.to("#futurePic", { filter: "none", duration: 1 });
+      alert('Correct! Our beach adventure awaits ❤️');
+      advancedMagicExplosion();
+    } else {
+      alert('Close! Try again 😘');
+    }
+  }
+
+  // Memory Clip
+  function playMemoryClip(id) {
+    alert(`Playing memory: ${id} – Sweet moments! 🥰`);
+    advancedMagicExplosion();
+  }
+
+  // Play Voice - Updated to play the uploaded AI audio file
+  function playVoice() {
+    const audio = new Audio('audio/I love 1.mp3');
+    audio.play().then(() => {
+      // Optional: Add heartbeat sync or effects while playing
+      drawHeartbeat();
+      advancedMagicExplosion();
+    }).catch(err => {
+      // Fallback to text alert if audio fails
+      alert('Happy Birthday baccha... tum meri life ka sabse soft, sabse strong aur sabse pyaara part ho. I love you forever, Sandeep se. 💖');
+      drawHeartbeat();
+    });
+  }
+
+  // Heartbeat Canvas
+  function drawHeartbeat() {
+    const canvas = document.getElementById('heartbeatCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 120;
+    let time = 0;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      for (let x = 0; x < canvas.width; x++) {
+        const y = 60 + Math.sin(x * 0.01 + time) * 25 * (Math.sin(time * 0.05) + 1);
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#ff69b4';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      time += 0.2;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  // Flip Gift
+  function flipGift(box, type) {
+    box.classList.toggle('flipped');
+    gsap.to(box, { rotationY: 360, duration: 0.8 });
+    if (navigator.vibrate) navigator.vibrate(200);
+    advancedMagicExplosion();
+  }
+
+  // Unlock Gift
+  function unlockGift() {
+    if (confirm('Guess: My fave thing about you? (Hint: Smile)')) {
+      const back = document.querySelector('#lockedGift .gift-back');
+      back.style.display = 'flex';
+      document.getElementById('lockedGift').classList.add('flipped');
+      createConfetti();
+      advancedMagicExplosion();
+    }
+  }
+
+  // Footnote
+  function playFootnote(word) {
+    alert(`Short story on "${word}": Your smile lights my world! 🥰`);
+  }
+
+  // Take Selfie - Functional
+  function takeSelfie() {
+    const video = document.getElementById('cameraVideo');
+    const canvas = document.getElementById('selfieCanvas');
+    video.style.display = 'block';
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } }).then(s => {
+      stream = s;
+      video.srcObject = s;
+      video.play();
+      setTimeout(() => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+        canvas.style.display = 'block';
+        video.style.display = 'none';
+        stream.getTracks().forEach(track => track.stop());
+        const link = document.createElement('a');
+        link.download = 'khushi-smile.jpg';
+        link.href = canvas.toDataURL();
+        link.click();
+        alert('Selfie captured & downloaded! Sent to Sandeep ❤️');
+        canvas.style.display = 'none';
+      }, 3000);
+    }).catch(err => alert('Camera access? Allow for magic! 😘'));
+  }
+
+  // Share Location - Functional
+  function shareLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        alert(`Your heart location: Lat ${pos.coords.latitude.toFixed(4)}, Long ${pos.coords.longitude.toFixed(4)} – Virtual kiss sent! 💋`);
+        advancedMagicExplosion();
+      }, () => alert('Location shared via stars! ✨'), { enableHighAccuracy: true });
+    } else {
+      alert('Location magic activated! 🌍');
+    }
+  }
+
+  // Future Awaits - Placeholder
+  function futureAwaits() {
+    alert('Future: Endless adventures with you! 💫');
+    nextPage(10);
+  }
+
+  // Countdown
+  function updateCountdown() {
+    const now = new Date();
+    let nextBday = new Date(now.getFullYear(), 11, 19); // Dec 19
+    if (now > nextBday) nextBday.setFullYear(nextBday.getFullYear() + 1);
+    const diff = nextBday - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById('countdown').textContent = `Next birthday together in ${days} days 🎉`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 86400000);
+
+  // Finale Reveal - Updated
+  function finaleReveal() {
+    gsap.from("#finaleText", { opacity: 0, y: 30, duration: 1 });
+    document.getElementById('finaleText').style.display = 'block';
+    createFloatingElements();
+    setTimeout(() => {
+      alert('Happy Bday Baccha! Love eternal 💖');
+    }, 2000);
+    advancedMagicExplosion();
+  }
+
+  // Magic Explosion
+  function advancedMagicExplosion() {
+    for (let i = 0; i < 100; i++) {
+      setTimeout(() => {
+        const particle = document.createElement('div');
+        particle.innerHTML = ['💖', '⭐', '✨'][Math.floor(Math.random() * 3)];
+        particle.style.cssText = 'position: fixed; left: 50%; top: 50%; font-size: 20px; pointer-events: none; z-index: 10;';
+        document.body.appendChild(particle);
+        gsap.to(particle, {
+          x: (Math.random() - 0.5) * 1000,
+          y: (Math.random() - 0.5) * 1000,
+          scale: 0,
+          opacity: 0,
+          duration: 2,
+          onComplete: () => particle.remove()
+        });
+      }, i * 20);
+    }
+  }
+
+  // Floating Elements
+  function createFloatingElements() {
+    const container = document.createElement('div');
+    container.className = 'floating-hearts';
+    document.body.appendChild(container);
+    const elements = ['💖', '🌹', '⭐', '🎈'];
+    const interval = setInterval(() => {
+      const elem = document.createElement('div');
+      elem.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+      elem.className = elem.innerHTML.includes('🎈') ? 'balloon' : 'heart';
+      elem.style.left = Math.random() * 100 + 'vw';
+      elem.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      container.appendChild(elem);
+      setTimeout(() => elem.remove(), 8000);
+    }, 800);
+    setTimeout(() => clearInterval(interval), 10000);
+  }
+
+  // Confetti
+  function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+      const conf = document.createElement('div');
+      conf.innerHTML = ['✨', '💖', '🌟'][Math.floor(Math.random() * 3)];
+      conf.style.cssText = `position: fixed; left: ${Math.random() * 100}vw; top: ${Math.random() * 100}vh; font-size: 20px; pointer-events: none; animation: floatPro 3s linear forwards;`;
+      document.body.appendChild(conf);
+      setTimeout(() => conf.remove(), 3000);
+    }
+  }
+
+  // PWA Install
+  window.addEventListener('beforeinstallprompt', (e) => { deferredPrompt = e; });
+  function installPWA() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => deferredPrompt = null);
+    } else {
+      alert('Add to home screen for magic anytime! ✨');
+    }
+  }
+
+  // Delete Site
+  function deleteSite() {
+    if (confirm('Delete magic? (Local only)')) {
+      localStorage.clear();
+      alert('Magic faded... but love eternal! Redirecting...');
+      window.location.reload();
+    }
+  }
+
+  // Touch Swipe for Carousel
+  let startX = 0;
+  document.querySelector('.carousel').addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.querySelector('.carousel').addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextSlide();
+    if (endX - startX > 50) prevSlide();
+  });
+
+  // Shake Detection
+  window.addEventListener('devicemotion', (e) => {
+    if (e.accelerationIncludingGravity && (Math.abs(e.accelerationIncludingGravity.x) > 15 || Math.abs(e.accelerationIncludingGravity.y) > 15)) {
+      if (navigator.vibrate) navigator.vibrate(200);
+      createFloatingElements();
+      alert('Shake detected! Random love quote: "You make my heart skip" ❤️');
+      advancedMagicExplosion();
+    }
+  });
+
+  // Triple Tap Easter Egg
+  document.addEventListener('click', () => {
+    tapCount++;
+    if (tapCount === 3) {
+      alert('I Miss You, Baccha ❤️');
+      advancedMagicExplosion();
+      tapCount = 0;
+    }
+  });
+
+  // Voice Recognition Easter Egg
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.onresult = (e) => {
+      if (e.results[0][0].transcript.toLowerCase().includes('sandeep loves khushi')) {
+        document.body.style.background = 'linear-gradient(135deg, gold, #ff69b4)';
+        createConfetti();
+        advancedMagicExplosion();
+        setTimeout(() => { document.body.style.background = ''; }, 3000);
+      }
+    };
+    // Start on button or something, but omitted for simplicity
+  }
+</script>
+</body>
+</html>
